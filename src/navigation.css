@@ -1,0 +1,89 @@
+* {
+  padding: 0px;
+  margin: 0px;
+}
+.E button {
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-top: 30px;
+  margin-left: 20px;
+  z-index: 10000000000000;
+  background-color: rgb(6, 160, 237);
+  padding-top: 7px;
+  padding-bottom: 7px;
+  padding-left: 25px;
+  padding-right: 25px;
+  color: white;
+  border: 2px solid transparent;
+  font-size: 15px;
+  padding-right: 25px;
+  box-shadow: 3px 3px 3px 3px rgb(44, 118, 155);
+  height: 40px;
+  width: 120px;
+  border-radius: 10px;
+  margin-top: 15px;
+}
+.A {
+  text-decoration: none;
+  padding-right: 8px;
+  color: white;
+}
+.B {
+  text-decoration: none;
+  padding-top: 10px;
+  color: white;
+}
+.C {
+  text-decoration: none;
+  padding-right: 14px;
+  padding-left: 14px;
+  color: white;
+}
+.D {
+  text-decoration: none;
+  padding-right: 11px;
+  padding-left: 11px;
+  color: white;
+}
+.F {
+  position: absolute;
+  margin-left: 2550px;
+}
+.E {
+  width: 180px;
+  height: auto;
+  background-color: rgb(10, 34, 58);
+  z-index: 10;
+  margin-left: 150px;
+  margin-top: 0px;
+  text-align: center;
+}
+
+.history-table-menu .F {
+  margin: 0;
+  margin-top: -24px;
+  margin-left: 24px;
+  height: 100vh;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(10, 34, 58);
+  z-index: 9999;
+  right: 0;
+}
+
+.history-table-menu .E {
+  margin: 0;
+  font-size: 16px;
+  /* padding: 0; */
+  /* margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      position: absolute;
+      top: 0;
+      bottom: 0; */
+}

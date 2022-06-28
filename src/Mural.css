@@ -1,0 +1,939 @@
+.App {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+#boat {
+  pointer-events: none;
+}
+
+#Parent {
+  width: 5760px;
+  height: 1080px;
+  position: relative;
+}
+
+.bg-image {
+  width: 100%;
+}
+
+.IREdock-image {
+  width: 18.4%;
+  position: absolute;
+  top: 46%;
+  left: 0%;
+}
+
+.boat {
+  width: 17.5%;
+  position: absolute;
+  top: 53%;
+}
+
+.SLBCcoal-image {
+  width: 25%;
+  position: absolute;
+  top: 0%;
+  left: 0%;
+}
+
+.Coalfactory-image {
+  position: absolute;
+  width: 4%;
+  left: 17.5%;
+  top: 10%;
+}
+
+.Coal-image {
+  position: absolute;
+  width: 8%;
+  left: 5%;
+  top: 0%;
+}
+
+.Train1-image {
+  position: absolute;
+  width: 7%;
+  left: -1%;
+  top: 16%;
+}
+
+.Train2-image {
+  position: absolute;
+  width: 8%;
+  left: -0.8%;
+  top: 20%;
+}
+
+.Industry-image {
+  position: absolute;
+  width: 18.4%;
+  top: 0%;
+  left: 15%;
+}
+
+.FSbank-image {
+  width: 3%;
+  position: absolute;
+  top: 30%;
+  left: 36.5%;
+}
+.airport-image {
+  width: 25.5%;
+  position: absolute;
+  top: 59%;
+  left: 16.1%;
+}
+
+.building-image {
+  width: 3%;
+  position: absolute;
+  top: 56%;
+  left: 54%;
+}
+
+.building2-image {
+  width: 3%;
+  position: absolute;
+  top: 12%;
+  left: 63%;
+}
+
+.building3-image {
+  width: 6%;
+  position: absolute;
+  top: 43%;
+  left: 46%;
+}
+
+.IREbuilding-image {
+  position: absolute;
+  width: 8%;
+  top: 57%;
+  left: 37.8%;
+}
+
+.TMTbuilding-image {
+  width: 4.4%;
+  position: absolute;
+  top: 23%;
+  left: 33%;
+}
+
+.CMhospital-image {
+  width: 3.5%;
+  position: absolute;
+  top: 43%;
+  left: 66%;
+}
+
+.CMmall-image {
+  width: 9%;
+  position: absolute;
+  top: 49%;
+  left: 59%;
+}
+
+.Mobileqr-image {
+  width: 2%;
+  position: absolute;
+  top: 33%;
+  left: 28%;
+}
+
+.TMTMovieposter-image3 {
+  width: 1.5%;
+  position: absolute;
+  top: 17%;
+  left: 33%;
+}
+
+.ESGtrees1 {
+  width: 8%;
+  position: absolute;
+  top: 89%;
+  left: 46%;
+}
+
+.ESGTree2 {
+  width: 2%;
+  position: absolute;
+  top: 77%;
+  left: 52%;
+}
+
+.ESGtree3 {
+  width: 9.9%;
+  position: absolute;
+  top: 39%;
+  left: 37%;
+}
+
+.SLRAhole-image {
+  width: 1.6%;
+  position: absolute;
+  top: 50%;
+  left: 39.7%;
+}
+
+.SLBCbuilding-image {
+  width: 11%;
+  position: absolute;
+  top: 0%;
+  left: 37%;
+}
+
+.SLRAgovernment-image {
+  width: 6.5%;
+  position: absolute;
+  top: 9%;
+  left: 49%;
+}
+
+.Cinema-image {
+  position: absolute;
+  top: 31%;
+  width: 3.2%;
+  left: 45%;
+}
+
+.Twintower-image {
+  position: absolute;
+  width: 9%;
+  left: 52.9%;
+  top: 0%;
+}
+
+.EDTech-image {
+  width: 12.8%;
+  position: absolute;
+  top: 9%;
+  left: 63.6%;
+}
+
+.ESGelectric-image {
+  width: 5%;
+  position: absolute;
+  top: 0%;
+  left: 64.5%;
+}
+
+.fire1 {
+  position: absolute;
+  top: 26%;
+  left: 18.2%;
+}
+
+.fire2 {
+  position: absolute;
+  top: 23%;
+  left: 19.6%;
+}
+
+.TMTDrone-image {
+  width: 4%;
+  position: absolute;
+  top: 30%;
+  left: 60%;
+}
+
+.TMTStadium-image {
+  width: 5.5%;
+  position: absolute;
+  top: 41%;
+  left: 55%;
+}
+
+.TMTMovieposter-image {
+  width: 1%;
+  position: absolute;
+  top: 79.5%;
+  left: 75.1%;
+}
+
+.TMTMovieposter-image2 {
+  width: 1%;
+  position: absolute;
+  top: 79%;
+  left: 91.5%;
+}
+
+.Dampond-image {
+  top: 55.6%;
+  left: 81.5%;
+  width: 9.9%;
+  position: absolute;
+}
+
+.Lamp-image {
+  position: absolute;
+  top: 75%;
+  left: 61%;
+  width: 0.5%;
+}
+
+.Mantralya-image {
+  position: absolute;
+  width: 3.9%;
+  left: 74%;
+  top: 58%;
+}
+
+.Cafe-image {
+  position: absolute;
+  width: 3.9%;
+  top: 56%;
+  left: 70%;
+}
+
+.Windmill-image {
+  position: absolute;
+  width: 1.2%;
+  top: 0%;
+  left: 77%;
+}
+
+.Windmill-image2 {
+  position: absolute;
+  width: 1.2%;
+  top: 18%;
+  left: 79%;
+}
+
+.Windmill-image3 {
+  position: absolute;
+  width: 1.2%;
+  top: 19%;
+  left: 83%;
+}
+
+.Windmill-image4 {
+  position: absolute;
+  width: 1.2%;
+  top: 29%;
+  left: 86%;
+}
+
+.Streetlightleft-image {
+  position: absolute;
+  width: 0.4%;
+  top: 68%;
+  left: 57%;
+}
+
+.Streetlightright-image {
+  position: absolute;
+  width: 0.4%;
+  top: 68%;
+  left: 57.9%;
+}
+
+.Streetlightleft-image2 {
+  position: absolute;
+  width: 0.5%;
+  left: 62.2%;
+  top: 16%;
+}
+
+.Streetlightright-image2 {
+  position: absolute;
+  width: 0.5%;
+  top: 33%;
+  left: 60.2%;
+}
+
+.Yellowbus-image {
+  position: absolute;
+  width: 1.5%;
+  top: 36%;
+  left: 43%;
+}
+
+.Yellowbus-image2 {
+  position: absolute;
+  width: 1.5%;
+  top: 78%;
+  left: 57%;
+}
+
+.Yellowbus-image3 {
+  position: absolute;
+  width: 1.5%;
+  top: 37.5%;
+  left: 66.5%;
+}
+
+.yellowcargoing-image {
+  position: absolute;
+  width: 0.6%;
+  top: 43%;
+  left: 60%;
+}
+
+.redcarcoming-image {
+  position: absolute;
+  width: 0.5%;
+  left: 54%;
+  top: 32%;
+}
+
+.greycarleft-image {
+  position: absolute;
+  width: 0.5%;
+  top: 10.5%;
+  left: 71.5%;
+}
+
+.greycarleft-image2 {
+  position: absolute;
+  width: 0.5%;
+  top: 25%;
+  left: 62%;
+}
+
+.whitecar-image {
+  position: absolute;
+  width: 0.5%;
+  top: 18%;
+  left: 74%;
+}
+
+.whitecar-image2 {
+  position: absolute;
+  width: 0.5%;
+  top: 66%;
+  left: 52%;
+}
+
+.greycarleft-image3 {
+  position: absolute;
+  width: 0.5%;
+  top: 59%;
+  left: 73%;
+}
+
+.greycarleft-image4 {
+  position: absolute;
+  width: 0.5%;
+  top: 49%;
+  left: 45%;
+}
+
+.greycarleft-image5 {
+  position: absolute;
+  width: 0.5%;
+  top: 32%;
+  left: 41%;
+}
+
+.darkgreycar-image {
+  position: absolute;
+  width: 0.5%;
+  top: 22%;
+  left: 38%;
+}
+
+.greencar-image {
+  position: absolute;
+  width: 0.5%;
+  top: 27%;
+  left: 37%;
+}
+
+.IMAbuilding-image {
+  width: 4.9%;
+  position: absolute;
+  top: 40%;
+  left: 49.8%;
+}
+
+.imacars-image {
+  position: absolute;
+  width: 0.8%;
+  top: 49%;
+  left: 54%;
+}
+
+.yellowcab-image {
+  position: absolute;
+  width: 0.5%;
+  top: 15%;
+  left: 33%;
+}
+
+.yellowcab-image2 {
+  position: absolute;
+  width: 0.5%;
+  top: 32%;
+  left: 39%;
+}
+
+.streetlight1-image {
+  position: absolute;
+  width: 0.5%;
+  top: 17.9%;
+  left: 32.4%;
+}
+
+.streetlight1-image2 {
+  position: absolute;
+  width: 0.5%;
+  top: 24%;
+  left: 30.5%;
+}
+
+.streetlight1-image3 {
+  position: absolute;
+  width: 0.4%;
+  top: 54%;
+  left: 28.5%;
+}
+
+.streetlight2-image {
+  position: absolute;
+  width: 0.5%;
+  top: 12%;
+  left: 15.5%;
+}
+
+.streetlight2-image {
+  position: absolute;
+  width: 0.5%;
+  top: 12%;
+  left: 15.5%;
+}
+
+.streetlight2-image2 {
+  position: absolute;
+  width: 0.5%;
+  top: 17%;
+  left: 17.5%;
+}
+
+.streetlight2-image3 {
+  position: absolute;
+  width: 0.5%;
+  top: 25%;
+  left: 19.8%;
+}
+.streetlight2-image4 {
+  position: absolute;
+  width: 0.5%;
+  top: 31%;
+  left: 22%;
+}
+.streetlight2-image5 {
+  position: absolute;
+  width: 0.5%;
+  top: 39%;
+  left: 24.8%;
+}
+
+/* .damwater {
+  width: 8.4%;
+  position: absolute;
+  top: 0%;
+  left: 84%;
+} */
+
+#backdrop {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.backdrop {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.backdrop2 {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+#primary {
+  display: flex;
+  flex-direction: column;
+  margin: 15px;
+  position: absolute;
+  top: 2%;
+  z-index: 1;
+  box-shadow: 2px 1px 33px 48px rgba(0, 0, 0, 0.75);
+  background-color: rgba(0 0 0 / 75%);
+}
+
+.primary-btn {
+  width: 3vw;
+  height: 14vh;
+  border: none;
+  background: transparent;
+  margin-bottom: 0;
+}
+
+.primary-icon {
+  width: 1.5vw;
+}
+
+.primary-text {
+  width: 2vw;
+}
+
+#service {
+  display: flex;
+  margin-right: 10px;
+  position: absolute;
+  z-index: 1;
+  top: 90%;
+  left: -1%;
+}
+
+.service-btn {
+  width: 3vw;
+  height: 5vh;
+  border: none;
+  background: transparent;
+  margin-left: 1vw;
+  margin-right: 3vw;
+}
+
+.service-btnmain {
+  width: 3vw;
+  height: 5vh;
+  border: none;
+  background: transparent;
+  margin-left: 1vw;
+  margin-right: 3vw;
+  z-index: 1;
+}
+
+/* .service-btnimage {
+    width: 3.5vw;
+    height: 3vh;
+  } */
+
+.modalbtns {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  z-index: 1;
+  animation: 1s ease-out 0s 1 slideInFromLeft;
+}
+
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+.flip-box-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.7s;
+  transform-origin: top;
+  /* transform-style: preserve-3d; */
+  animation-name: example;
+  animation-duration: 0.7s;
+  animation-fill-mode: forwards;
+  opacity: 0;
+}
+
+.flip-box-inner2 {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.7s;
+  transform-origin: top;
+  /* transform-style: preserve-3d; */
+  animation-name: example;
+  animation-duration: 0.7s;
+  animation-fill-mode: forwards;
+  animation-delay: 0.8s;
+  opacity: 0;
+}
+.flip-box-inner3 {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.7s;
+  transform-origin: top;
+  /* transform-style: preserve-3d; */
+  animation-name: example;
+  animation-duration: 0.7s;
+  animation-fill-mode: forwards;
+  animation-delay: 1.6s;
+  opacity: 0;
+}
+
+.flip-box-inner4 {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.7s;
+  transform-origin: top;
+  /* transform-style: preserve-3d; */
+  animation-name: example;
+  animation-duration: 0.7s;
+  animation-fill-mode: forwards;
+  animation-delay: 2.3s;
+  opacity: 0;
+}
+@keyframes example {
+  from {
+    transform: rotateX(230deg);
+  }
+  to {
+    transform: rotateX(360deg);
+    opacity: 1;
+  }
+}
+
+.modalbtn {
+  /* width: 2vw;
+    height: 2vh; */
+  /* width: 100px;
+  height: 40px;
+  margin: 3px; */
+  margin: 10px;
+  border: none;
+  width: 1vw;
+}
+
+.hotspot {
+  z-index: 0;
+}
+
+#video-container {
+  width: 65vw;
+  height: 61vh;
+  overflow: scroll;
+  position: absolute;
+  z-index: 1;
+  top: 15%;
+  left: 18%;
+}
+
+.individualvideo {
+  width: 100%;
+  height: 20%;
+}
+
+#text-container {
+  width: 65vw;
+  height: 61vh;
+  overflow: scroll;
+  position: absolute;
+  z-index: 1;
+  top: 10%;
+  left: 18%;
+  background-color: white;
+}
+
+.h1content {
+  font-family: "Times New Roman", Times, serif;
+  margin: 100px;
+}
+
+#image-container {
+  width: 65vw;
+  height: 80%;
+  overflow: hidden;
+  position: absolute;
+  z-index: 1;
+  top: 10%;
+  left: 18%;
+}
+
+.individualimage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+#pdf-container {
+  width: 65vw;
+  height: 61vh;
+  overflow: scroll;
+  position: absolute;
+  z-index: 1;
+  /* top: 10%;
+    left: 18%; */
+  border: 1px solid red;
+}
+
+#infocard-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 1vh;
+}
+
+.swiper-buttons-container {
+  z-index: 1;
+}
+
+.swiper-button-prev-unique {
+  color: #5499c7;
+  z-index: 1;
+  font-size: 100px;
+  position: absolute;
+  top: 34%;
+  left: 1%;
+}
+
+.swiper-button-next-unique {
+  color: #5499c7;
+  z-index: 1;
+  font-size: 100px;
+  position: absolute;
+  top: 34%;
+  left: 94%;
+}
+
+.slides {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.slide {
+  position: absolute;
+  width: 100%;
+  top: 0;
+}
+.slide.showing {
+  display: block;
+}
+
+/* #Parent .F {
+  top: 0;
+  left: 50%;
+  z-index: 1;
+}
+
+#Parent .E {
+  width: 178px;
+  height: 1080px;
+  padding-top: 35vh;
+}
+
+#Parent .E button {
+  margin-left: 0;
+} */
+
+.Highlightbtn {
+  border: none;
+  background-image: linear-gradient(
+    to right,
+    #6d16e9,
+    #5c2be8,
+    #4b38e7,
+    #3741e4,
+    #2048e1
+  );
+  color: white;
+  margin: 5px;
+  width: 5vw;
+  height: 4vh;
+}
+
+#Sectorlist {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  z-index: 1;
+}
+
+#Servicelist {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  z-index: 1;
+}
+
+#subpart {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  z-index: 1;
+}
+
+.Highlightsubpart {
+  border: none;
+  background-image: linear-gradient(
+    to right,
+    #6d16e9,
+    #5c2be8,
+    #4b38e7,
+    #3741e4,
+    #2048e1
+  );
+  color: white;
+  margin: 5px;
+  width: 5vw;
+  height: 4vh;
+}
+
+#fixserviceanimation {
+  transition: 1s all ease;
+  transform: translateX(0%);
+  opacity: 1;
+  box-shadow: 2px 1px 33px 48px rgba(0, 0, 0, 0.75);
+  background-color: rgba(0 0 0 / 75%);
+}
+
+#serviceanimation {
+  transition: 1s all ease;
+  transform: translateX(-100%);
+  opacity: 0;
+}
+
+#btnicon-container {
+  width: 80px;
+}
+
+.btnicon {
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  background-image: linear-gradient(
+    to right,
+    #6d16e9,
+    #5c2be8,
+    #4b38e7,
+    #3741e4,
+    #2048e1
+  );
+}
+
+#videoicon-container {
+  width: 5vw;
+  height: 4vh;
+}
+
+.videoicon {
+  width: 100%;
+}
