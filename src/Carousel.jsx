@@ -6,14 +6,14 @@ import "./Carousel.css";
 function MyCarousel({ onBackDropClick, type, urls, itemTop, itemLeft }) {
   useEffect(() => {
     console.log({ type, urls, itemTop, itemLeft });
-    console.log(itemTop, itemLeft);
-    if (itemTop > 700) {
-      document.getElementById("my-carousel").style.top = `${itemTop}px`;
-      document.getElementById("my-carousel").style.left = `${itemLeft + 500}px`;
-    } else {
-      document.getElementById("my-carousel").style.top = `${itemTop + 200}px`;
-      document.getElementById("my-carousel").style.left = `${itemLeft + 500}px`;
-    }
+    // console.log(itemTop, itemLeft);
+    // if (itemTop > 700) {
+    //   document.getElementById("my-carousel").style.top = `${itemTop}px`;
+    //   document.getElementById("my-carousel").style.left = `${itemLeft + 500}px`;
+    // } else {
+    //   document.getElementById("my-carousel").style.top = `${itemTop + 200}px`;
+    //   document.getElementById("my-carousel").style.left = `${itemLeft + 500}px`;
+    // }
   }, []);
 
   return (

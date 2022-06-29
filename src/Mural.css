@@ -582,18 +582,18 @@
 
 .primary-btn {
   width: 3vw;
-  height: 14vh;
+  height: 12.3vh;
   border: none;
   background: transparent;
-  margin-bottom: 0;
+  margin-bottom: 0.5vh;
 }
 
 .primary-icon {
-  width: 1.5vw;
+  width: 0.8vw;
 }
 
 .primary-text {
-  width: 2vw;
+  width: 2.5vw;
 }
 
 #service {
@@ -601,7 +601,7 @@
   margin-right: 10px;
   position: absolute;
   z-index: 1;
-  top: 90%;
+  top: 93%;
   left: -1%;
 }
 

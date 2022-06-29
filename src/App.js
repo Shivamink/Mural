@@ -82,7 +82,7 @@ import pdfIcon from "./Assets/pdfIcon.png";
 //#endregion
 
 const completemap = {
-  sector1: ["CMmall", "EDTech"],
+  "Consumer markets": ["CMmall", "EDTech"],
   "Energy & Natural Resources": [
     "Solarpanel1",
     "Solarpanel2",
@@ -348,6 +348,10 @@ function App() {
 
   //Icon handler
   useEffect(() => {
+    Setsectors([]);
+    Setservices([]);
+    sectorIcon = [];
+    serviceIcon = [];
     Object.entries(Icons).map(function (eachIcon) {
       if (eachIcon[1].resource_type == "sector") {
         sectorIcon.push(eachIcon[1]);

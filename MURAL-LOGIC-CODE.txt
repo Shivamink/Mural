@@ -1,0 +1,1100 @@
+import { useState, useEffect, createRef, useRef } from "react";
+import Carousel from "./Carousel.jsx";
+import Navigation from "./Navigation.jsx";
+import base64 from "base-64";
+import "./Mural.css";
+
+//#region <Asset Imports>
+import Ground from "./Assets/Ground.png";
+import Airport from "./Assets/Airport.png";
+import Building from "./Assets/Building.png";
+import Building2 from "./Assets/Building-2.png";
+import Building3 from "./Assets/Building-3.png";
+import IREbuildings from "./Assets/I&RE buildings.png";
+import TMTbuilding from "./Assets/TMT building.png";
+import CMhospital from "./Assets/CM hospital.png";
+import CMmall from "./Assets/CM mall.png";
+import EDTech from "./Assets/EDTech Services school.png";
+import ESGelectric from "./Assets/ESG electric lines.png";
+import FSbank from "./Assets/FS bank.png";
+import SLBCcoal from "./Assets/SL BC coal.png";
+import IREdock from "./Assets/I&RE dock.png";
+import SLBCbuilding from "./Assets/SL BC building.png";
+import SLRAgovernment from "./Assets/SLRA government.png";
+import SLRAhole from "./Assets/SLRA hole.png";
+import IMAbuilding from "./Assets/IM&A building.png";
+import TMTDrone from "./Assets/Drone.webm";
+import TMTMovieposter from "./Assets/TMT Movie poster.png";
+import TMTMovieposter2 from "./Assets/TMT Movie poster2.png";
+import TMTMovieposter3 from "./Assets/TMT Movie poster3.png";
+import TMTStadium from "./Assets/TMT Stadium.png";
+import Mobileqr from "./Assets/Mobile qr.png";
+import Consumermarkets from "./Assets/Consumer markets.png";
+import EnergyNatural from "./Assets/Energy & Natural  Resources.png";
+import FinancialServices from "./Assets/Financial Services.png";
+import GovernmentPublic from "./Assets/Government &  Public Services.png";
+import InfrastructureRealEstate from "./Assets/Infrastructure & Real Estate.png";
+import IndustrialManufacturingAuto from "./Assets/Industrial Manufacturing  & Auto.png";
+import TechnologyMediatelecom from "./Assets/Technology, Media & telecom.png";
+import Services from "./Assets/Services.png";
+import BusinessConsulting from "./Assets/Business Consulting.png";
+import DigitalTrustCyber from "./Assets/Digital Trust- Cyber.png";
+import RiskAdvisory from "./Assets/Risk Advisory.png";
+import TechEnablement from "./Assets/Tech Enablement.png";
+import OneMA from "./Assets/One M&A.png";
+import ManagedServices from "./Assets/Managed Services.png";
+import Tax from "./Assets/Tax.png";
+import StrategicInitiatives from "./Assets/Strategic Initiatives.png";
+import ESGtrees1 from "./Assets/ESG trees 1.png";
+import ESGTree2 from "./Assets/ESG Tree 2.png";
+import ESGtree3 from "./Assets/ESG tree 3.png";
+import Damwater from "./Assets/Dam water.webm";
+import Boat from "./Assets/Boat.webm";
+import fire from "./Assets/fire2.webm";
+import imageIcon from "./Assets/imageIcon.png";
+import pptIcon from "./Assets/pptIcon.png";
+import pdfIcon from "./Assets/pdfIcon.png";
+//#endregion
+
+//#region <TaxServiceAssets>
+import BankingAndFinancialServicesTaxPdf1 from "./TaxServiceAssets/Banking and Financial Services Tax/banking-financial-services-and-insurance.pdf";
+import BankingAndFinancialServicesTaxPdf2 from "./TaxServiceAssets/Banking and Financial Services Tax/flyer-insurance-companies-final-updated-may-Final.pdf";
+import BankingAndFinancialServicesTaxPdf3 from "./TaxServiceAssets/Banking and Financial Services Tax/kpmg-ifsc-flyer.pdf";
+import BankingAndFinancialServicesTaxPdf4 from "./TaxServiceAssets/Banking and Financial Services Tax/taxation-of-dividend.pdf";
+
+import CorporateInternationalTaxPdf1 from "./TaxServiceAssets/Corporate International Tax/charitable-organisation-flyer.pdf";
+import CorporateInternationalTaxPdf2 from "./TaxServiceAssets/Corporate International Tax/dividend-taxation-nr-shareholders.pdf";
+import CorporateInternationalTaxPdf3 from "./TaxServiceAssets/Corporate International Tax/doing-business-india-tax.pdf";
+import CorporateInternationalTaxPdf4 from "./TaxServiceAssets/Corporate International Tax/enhancement-of-foreign-direct-investment-in-defence.pdf";
+import CorporateInternationalTaxPdf5 from "./TaxServiceAssets/Corporate International Tax/equalisation-levy.pdf";
+import CorporateInternationalTaxPdf6 from "./TaxServiceAssets/Corporate International Tax/faceless-assessment-and-appeals-scheme.pdf";
+import CorporateInternationalTaxPdf7 from "./TaxServiceAssets/Corporate International Tax/foreign-contribution-Regulation-act-2010-impact-of-amendments.pdf";
+import CorporateInternationalTaxPdf8 from "./TaxServiceAssets/Corporate International Tax/issues-and-considerations-for-beps-in-2023-brochure-final-india.pdf";
+import CorporateInternationalTaxPdf9 from "./TaxServiceAssets/Corporate International Tax/multilateral-instrument.pdf";
+import CorporateInternationalTaxPdf10 from "./TaxServiceAssets/Corporate International Tax/tax-and-regulatory-aspects-for-itites-companies-in-sez.pdf";
+
+import GlobalMobilityServicesPdf1 from "./TaxServiceAssets/Global Mobility Services/COVID-19-induced-stay-in-India.pdf";
+import GlobalMobilityServicesVideo1 from "./TaxServiceAssets/Global Mobility Services/ESOP.mp4";
+import GlobalMobilityServicesPdf2 from "./TaxServiceAssets/Global Mobility Services/global-mobility-services.pdf";
+import GlobalMobilityServicesPdf3 from "./TaxServiceAssets/Global Mobility Services/labour-codes.pdf";
+import GlobalMobilityServicesPdf4 from "./TaxServiceAssets/Global Mobility Services/outbound-secondments-tax-and-regulatory-considerations.pdf";
+import GlobalMobilityServicesPdf5 from "./TaxServiceAssets/Global Mobility Services/tax-exemption-non-monetary-prerequisites.pdf";
+
+import IndirectTaxPdf1 from "./TaxServiceAssets/Indirect Tax/india-2.0-reimagining-global-trade.pdf";
+import IndirectTaxPdf2 from "./TaxServiceAssets/Indirect Tax/india-in-gvc- fta-benefits-and-importers-accountability.pdf";
+import IndirectTaxPdf3 from "./TaxServiceAssets/Indirect Tax/kpmg-tax-flyer-inbound-secondments.pdf";
+import IndirectTaxPdf4 from "./TaxServiceAssets/Indirect Tax/make-in-india-incentive-schemes-electronics-manufacturing.pdf";
+import IndirectTaxPdf5 from "./TaxServiceAssets/Indirect Tax/make-in-india-incentive-schemes-medical-devices.pdf";
+import IndirectTaxPdf6 from "./TaxServiceAssets/Indirect Tax/sez-point-of-view.pdf";
+
+import TaxTechnoAutomationVideo1 from "./TaxServiceAssets/Tax Techno & Automation/KPMG Tax Hub Solution Video.mp4";
+import TaxTechnoAutomationVideo2 from "./TaxServiceAssets/Tax Techno & Automation/KPMG Transfer Pricing Documentation Maintenance Tool.mp4";
+import TaxTechnoAutomationVideo3 from "./TaxServiceAssets/Tax Techno & Automation/TDS on Dividend Solution Video (1).mp4";
+import TaxTechnoAutomationPdf1 from "./TaxServiceAssets/Tax Techno & Automation/automating-transfer-pricing-cost-segmentation-allocation-process.pdf";
+import TaxTechnoAutomationPdf2 from "./TaxServiceAssets/Tax Techno & Automation/kpmg-tax-data-hub.pdf";
+import TaxTechnoAutomationPdf3 from "./TaxServiceAssets/Tax Techno & Automation/kpmg-tax-deducted-at-source-tds-reconciliation-tool.pdf";
+import TaxTechnoAutomationPdf4 from "./TaxServiceAssets/Tax Techno & Automation/kpmg-tax-workflow-manager.pdf";
+import TaxTechnoAutomationPdf5 from "./TaxServiceAssets/Tax Techno & Automation/kpmg-transfer-pricing-document-maintenance-tool.pdf";
+import TaxTechnoAutomationPdf6 from "./TaxServiceAssets/Tax Techno & Automation/tax-intelligence-solution-tis-for-gst.pdf";
+import TaxTechnoAutomationPdf7 from "./TaxServiceAssets/Tax Techno & Automation/tax-intelligence-solution-tis-for-transfer-pricing.pdf";
+//#endregion
+
+const completemap = {
+  sector1: ["CMhospital", "EDTech"],
+  sector2: [],
+  sector3: ["FSbank"],
+  sector4: [],
+  sector5: ["IREdock", "IREbuilding"],
+  sector6: ["IMAbuilding"],
+  sector7: [
+    "TMTbuilding",
+    "EDTech",
+    "TMTStadium",
+    "Mobileqr",
+    "SLRAhole",
+    "TMTDrone",
+    "TMTMovieposter",
+  ],
+  service1: [],
+  service2: ["SLBCcoal", "SLBCbuilding", "Mobileqr"],
+  service3: ["Mobileqr"],
+  service4: ["SLRAhole", "SLRAgovernment"],
+  service5: [],
+  service6: [],
+  service7: [],
+  service8: ["ESGelectric", "ESGtree3", "FSbank"],
+  service9: [],
+};
+
+const TaxServiceData = {
+  s1: {
+    image: [],
+    pdf: [
+      BankingAndFinancialServicesTaxPdf1,
+      BankingAndFinancialServicesTaxPdf2,
+      BankingAndFinancialServicesTaxPdf3,
+      BankingAndFinancialServicesTaxPdf4,
+    ],
+    video: [],
+    text: [],
+  },
+  s2: {
+    image: [],
+    pdf: [
+      CorporateInternationalTaxPdf1,
+      CorporateInternationalTaxPdf2,
+      CorporateInternationalTaxPdf3,
+      CorporateInternationalTaxPdf4,
+      CorporateInternationalTaxPdf5,
+      CorporateInternationalTaxPdf6,
+      CorporateInternationalTaxPdf7,
+      CorporateInternationalTaxPdf8,
+      CorporateInternationalTaxPdf9,
+      CorporateInternationalTaxPdf10,
+    ],
+    video: [],
+    text: [],
+  },
+  s3: {
+    image: [],
+    pdf: [
+      GlobalMobilityServicesPdf1,
+      GlobalMobilityServicesPdf2,
+      GlobalMobilityServicesPdf3,
+      GlobalMobilityServicesPdf4,
+      GlobalMobilityServicesPdf5,
+    ],
+    video: [GlobalMobilityServicesVideo1],
+    text: [],
+  },
+  s4: {
+    image: [],
+    pdf: [
+      IndirectTaxPdf1,
+      IndirectTaxPdf2,
+      IndirectTaxPdf3,
+      IndirectTaxPdf4,
+      IndirectTaxPdf5,
+      IndirectTaxPdf6,
+    ],
+    video: [],
+    text: [],
+  },
+  s5: {
+    image: [],
+    pdf: [
+      TaxTechnoAutomationPdf1,
+      TaxTechnoAutomationPdf2,
+      TaxTechnoAutomationPdf3,
+      TaxTechnoAutomationPdf4,
+      TaxTechnoAutomationPdf5,
+      TaxTechnoAutomationPdf6,
+      TaxTechnoAutomationPdf7,
+    ],
+    video: [
+      TaxTechnoAutomationVideo1,
+      TaxTechnoAutomationVideo2,
+      TaxTechnoAutomationVideo3,
+    ],
+    text: [],
+  },
+};
+
+const USERNAME = "kpmg_mural";
+const PASSWORD = "password";
+let itemTop = null;
+let itemLeft = null;
+// let group = false;
+let sector = false;
+let service = false;
+let individualhotspot = null;
+let subvalue = null;
+let ssname = null;
+
+const MEDIA_STATUS = {
+  text: false,
+  image: false,
+  pdf: false,
+  video: false,
+};
+
+const MEDIA_ANIMATION_DURATION_REQ = {
+  text: 0.7,
+  image: 0.7,
+  pdf: 0.7,
+  video: 0.7,
+};
+
+const ANIMATION_DELAY = {
+  text: 0,
+  image: 0,
+  pdf: 0,
+  video: 0,
+};
+
+function App() {
+  const [activeGroup, setActiveGroup] = useState({ prev: null, current: null });
+  const [activeHotspot, setActiveHotspot] = useState({
+    prev: null,
+    current: null,
+  });
+  const [content, setContent] = useState({});
+  const [ssmapinfo, Setssmapinfo] = useState({});
+  const [datamapinfo, Setdatamapinfo] = useState({});
+  const [mainsec, Setmainsec] = useState([]);
+  const [mainsev, Setmainsev] = useState([]);
+  //Show hide content state
+  const [modalbtn, setModalbtn] = useState(false);
+  const [showsectorlist, Setshowsectorlist] = useState(false); //shows list of sector and services
+  const [showservicelist, Setshowservicelist] = useState(false);
+  const [showsub, Setshowsub] = useState(false); //shows sub part of sector or service
+  const [infoModal, setInfoModal] = useState(null);
+  const [animation, Setanimation] = useState(false);
+  const [currentsubservice, Setcurrentsubservice] = useState(null); //The sub service we will update with data;
+
+  /**
+   * @type{React.RefObject<HTMLDivElement>}
+   */
+  const backdropRef = createRef(null);
+  let buttons = createRef(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      let jwt = localStorage.getItem("mural_jwt");
+      const exp = jwt
+        ? parseInt(JSON.parse(base64.decode(jwt.split(".")[1])).exp)
+        : 0;
+
+      // console.log({ jwt, exp });
+
+      if (!(parseInt((Date.now() / 1000).toFixed(0)) < exp)) {
+        const fd = new FormData();
+        fd.append("user", USERNAME);
+        fd.append("pass", PASSWORD);
+
+        const authRes = await fetch(
+          "https://experientialetc.com/KPMG-test/jwt/jwtAuthorize.php",
+          {
+            method: "POST",
+            body: fd,
+          }
+        );
+        jwt = (await authRes.json()).key;
+        localStorage.setItem("mural_jwt", jwt);
+      }
+
+      const res = await fetch(
+        "https://experientialetc.com/KPMG-test/fetchMuralHotspotApi.php",
+        {
+          method: "POST",
+          headers: {
+            Authorization: "Bearer " + jwt,
+          },
+        }
+      );
+      const json = await res.json();
+      // console.log(json, "jsonnnnn");
+      /**
+       * @type {{
+       * content_type: string,
+       * content_url: string,
+       * hotspot_label: string
+       * }[]}
+       */
+      const muralContent = json.mural_hotspot;
+      let formattedData = {};
+      muralContent.forEach((hotspot) => {
+        if (!formattedData[hotspot.hotspot_label]) {
+          formattedData[hotspot.hotspot_label] = {
+            video: [],
+            image: [],
+            text: [],
+            pdf: [],
+          };
+        }
+        formattedData[hotspot.hotspot_label][hotspot.content_type].push(
+          hotspot.content_url
+        );
+      });
+      // console.log(formattedData, "formattedData");
+      setContent(formattedData);
+      ///////////////////New Maps///////////////////////
+      let ssmap = {};
+      muralContent.forEach((eachssmapcontent) => {
+        if (!ssmap[eachssmapcontent.hotspot_label]) {
+          if (eachssmapcontent.resource_under == "") {
+            ssmap[eachssmapcontent.resource_name] = [];
+          } else if (
+            eachssmapcontent.resource_type == "subservice" ||
+            "subsector"
+          ) {
+            if (!ssmap[eachssmapcontent.resource_under]) {
+              ssmap[eachssmapcontent.resource_under] = [];
+            }
+            ssmap[eachssmapcontent.resource_under].push(
+              eachssmapcontent.resource_name
+            );
+          }
+        }
+      });
+      // console.log(ssmap, "ssmap");
+      Setssmapinfo(ssmap);
+
+      let datamap = {};
+      muralContent.forEach((eachdatamapcontent) => {
+        if (!datamap[eachdatamapcontent.hotspot_label]) {
+          datamap[eachdatamapcontent.hotspot_label] = {
+            Mainsector: [],
+            Mainservice: [],
+            Subsector: [],
+            Subservice: [],
+            datacontent: {},
+          };
+        }
+        if (eachdatamapcontent.resource_type == "sector") {
+          if (
+            !datamap[eachdatamapcontent.hotspot_label].Mainsector.includes(
+              eachdatamapcontent.resource_name
+            )
+          ) {
+            datamap[eachdatamapcontent.hotspot_label].Mainsector.push(
+              eachdatamapcontent.resource_name
+            );
+          }
+        } else if (eachdatamapcontent.resource_type == "service") {
+          if (
+            !datamap[eachdatamapcontent.hotspot_label].Mainservice.includes(
+              eachdatamapcontent.resource_name
+            )
+          ) {
+            datamap[eachdatamapcontent.hotspot_label].Mainservice.push(
+              eachdatamapcontent.resource_name
+            );
+          }
+        } else if (eachdatamapcontent.resource_type == "subsector") {
+          if (
+            !datamap[eachdatamapcontent.hotspot_label].Subsector.includes(
+              eachdatamapcontent.resource_name
+            )
+          ) {
+            datamap[eachdatamapcontent.hotspot_label].Subsector.push(
+              eachdatamapcontent.resource_name
+            );
+          }
+        } else if (eachdatamapcontent.resource_type == "subservice") {
+          if (
+            !datamap[eachdatamapcontent.hotspot_label].Subservice.includes(
+              eachdatamapcontent.resource_name
+            )
+          ) {
+            datamap[eachdatamapcontent.hotspot_label].Subservice.push(
+              eachdatamapcontent.resource_name
+            );
+          }
+        }
+        if (
+          !datamap[eachdatamapcontent.hotspot_label].datacontent[
+            eachdatamapcontent.resource_name
+          ]
+        ) {
+          datamap[eachdatamapcontent.hotspot_label].datacontent[
+            eachdatamapcontent.resource_name
+          ] = {
+            video: [],
+            text: [],
+            image: [],
+            pdf: [],
+          };
+        }
+        datamap[eachdatamapcontent.hotspot_label].datacontent[
+          eachdatamapcontent.resource_name
+        ][eachdatamapcontent.content_type].push(eachdatamapcontent.content_url);
+      });
+
+      console.log(datamap, "datamap");
+      Setdatamapinfo(datamap);
+    };
+
+    fetchData();
+
+    // console.log(TaxServiceData);
+  }, []);
+
+  // Group Handler
+  useEffect(() => {
+    if (activeGroup.current === null) return;
+    console.log(activeGroup);
+
+    if (activeGroup.current && backdropRef)
+      backdropRef.current.style.zIndex = 0;
+
+    const currentGroup = completemap[activeGroup.current];
+    if (currentGroup) {
+      currentGroup.forEach((h) => {
+        document.getElementById(h).style.zIndex = 1;
+      });
+    }
+
+    if (activeGroup.current === activeGroup.prev) return;
+
+    const prevGroup = completemap[activeGroup.prev];
+    if (prevGroup) {
+      prevGroup.forEach((h) => {
+        document.getElementById(h).style.zIndex = 0;
+      });
+    }
+  }, [activeGroup]);
+
+  // Hotspot Handler
+  useEffect(() => {
+    if (activeHotspot.current === null) return;
+    console.log(activeHotspot);
+
+    if (activeGroup.current) {
+      const currentGroup = completemap[activeGroup.current];
+      currentGroup.forEach((h) => {
+        if (h === activeHotspot.current) return;
+        document.getElementById(h).style.zIndex = 0;
+      });
+    } else {
+      document.getElementById(activeHotspot.current).style.zIndex = 1;
+      backdropRef.current.style.zIndex = 0;
+    }
+  }, [activeHotspot]);
+
+  function enablegroup(event) {
+    console.log("Clicked on Group: ", event.target.id);
+    // console.log(event.target.className, "classname");
+    if (event.target.id == "sector7") {
+      console.log("Technology, Media & telecom");
+      ssname = "Technology, Media & telecom";
+    } else if (event.target.id == "sector3") {
+      ssname = "Financial Services";
+    } else if (event.target.id == "sector6") {
+      ssname = "Industrial Manufacturing & Auto";
+    } else if (event.target.id == "sector1") {
+      ssname = "Consumer markets";
+    } else if (event.target.id == "sector5") {
+      ssname = "Infrastructure & Real Estate";
+    } else if (event.target.id == "service2") {
+      ssname = "Business Consulting";
+    } else if (event.target.id == "service3") {
+      ssname = "Digital Trust-Cyber";
+    } else if (event.target.id == "service4") {
+      ssname = "Risk Advisory";
+    } else if (event.target.id == "service8") {
+      ssname = "Environment Social & Governance";
+    }
+    // if (
+    //   event.target.id.indexOf("sector") > -1 ||
+    //   event.target.id.indexOf("service") > -1
+    // ) {
+    //   group = true;
+    //   // console.log(group);
+    // }
+
+    if (event.target.id.includes("sector")) {
+      console.log("Sector");
+      sector = true;
+      service = false;
+    } else if (event.target.id.includes("service")) {
+      console.log("Service");
+      service = true;
+      sector = false;
+    }
+
+    setActiveGroup((state) => ({
+      prev: state.current,
+      current: event.target.id,
+    }));
+  }
+
+  function getanimation() {
+    Setanimation(!animation);
+  }
+
+  function individualitem(event) {
+    console.log("Clicked on Hotspot: ", event.target.id);
+    individualhotspot = event.target.id;
+    let textbtn = document.getElementsByClassName("flip-box-inner");
+    let imagebtn = document.getElementsByClassName("flip-box-inner2");
+    let pdfbtn = document.getElementsByClassName("flip-box-inner3");
+    let videobtn = document.getElementsByClassName("flip-box-inner4");
+    if (!sector && !service) {
+      Setshowsectorlist(true);
+      Setshowservicelist(true);
+    } else {
+      Object.entries(datamapinfo).map((eachdatamapinfo) => {
+        if (eachdatamapinfo[0] == individualhotspot) {
+          console.log(eachdatamapinfo[1].datacontent[ssname], "info");
+          subvalue = eachdatamapinfo[1].datacontent[ssname];
+          for (let media_type in subvalue) {
+            MEDIA_STATUS[media_type] = subvalue[media_type].length > 0;
+          }
+        }
+      });
+      function start() {
+        let delay = 0;
+        for (let media in MEDIA_STATUS) {
+          if (MEDIA_STATUS[media]) {
+            ANIMATION_DELAY[media] = delay;
+            delay += MEDIA_ANIMATION_DURATION_REQ[media];
+          }
+        }
+        console.log(ANIMATION_DELAY);
+        textbtn[0].style.animationDelay = `${ANIMATION_DELAY.text}s`;
+        imagebtn[0].style.animationDelay = `${ANIMATION_DELAY.image}s`;
+        pdfbtn[0].style.animationDelay = `${ANIMATION_DELAY.pdf}s`;
+        videobtn[0].style.animationDelay = `${ANIMATION_DELAY.video}s`;
+        console.log(MEDIA_STATUS, "media-status");
+      }
+
+      start();
+      setModalbtn(true);
+    }
+    // else if (sector) {
+    //   Setshowsectorlist(true);
+    // } else if (service) {
+    //   Setshowservicelist(true);
+    // }
+    Object.entries(datamapinfo).map((eachdatamapinfo) => {
+      if (eachdatamapinfo[0] == event.target.id) {
+        Setmainsec(eachdatamapinfo[1].Mainsector);
+        Setmainsev(eachdatamapinfo[1].Mainservice);
+      }
+    });
+    setActiveHotspot((state) => ({
+      prev: state.current,
+      current: event.target.id,
+    }));
+
+    // if (group) {
+    //   setShowlist(false);
+    //   Setshowsub(true);
+    // } else {
+    //   setShowlist(true);
+    // }
+
+    let itemval = document.getElementById(event.target.id);
+    let itemin = itemval.getBoundingClientRect();
+    itemTop = itemin.top;
+    itemLeft = itemin.left;
+    console.log(itemTop);
+    console.log(itemin.top, itemin.left);
+    let button = buttons.current;
+
+    button.style.top = `${itemin.top.toFixed()}px`;
+    button.style.left = `${itemin.left + 550}px`;
+    if (sector || service) {
+      button.style.left = `${itemin.left + 250}px`;
+    }
+    let Sectorlist = document.getElementById("Sectorlist");
+    Sectorlist.style.top = `${itemin.top.toFixed()}px`;
+    Sectorlist.style.left = `${itemin.left.toFixed() - 300}px`;
+
+    let Servicelist = document.getElementById("Servicelist");
+    Servicelist.style.top = `${itemin.top.toFixed()}px`;
+    Servicelist.style.left = `${itemin.left + 150}px`;
+
+    if (itemin.left == 0 || itemin.top == 259.1964416503906) {
+      button.style.top = `${500}px`;
+      button.style.left = `${1500}px`;
+      Sectorlist.style.top = `${500}px`;
+      Sectorlist.style.left = `${500}px`;
+      Servicelist.style.top = `${500}px`;
+      Servicelist.style.left = `${900}px`;
+    }
+  }
+
+  function showsubservice() {
+    Setshowsub(true);
+  }
+
+  function showmainbtn(event) {
+    console.log(individualhotspot, "individualhotspot");
+    console.log(event.target.id, "clickedsub");
+    let textbtn = document.getElementsByClassName("flip-box-inner");
+    let imagebtn = document.getElementsByClassName("flip-box-inner2");
+    let pdfbtn = document.getElementsByClassName("flip-box-inner3");
+    let videobtn = document.getElementsByClassName("flip-box-inner4");
+
+    const hostspot_data = datamapinfo[individualhotspot];
+    if (!hostspot_data) return;
+
+    const media = hostspot_data.datacontent[event.target.id];
+    for (let media_type in media) {
+      MEDIA_STATUS[media_type] = media[media_type].length > 0;
+    }
+
+    console.log({ media, MEDIA_STATUS, ANIMATION_DELAY });
+
+    Object.entries(datamapinfo).map((eachdatamapinfo) => {
+      if (eachdatamapinfo[0] == individualhotspot) {
+        console.log(eachdatamapinfo[1].datacontent[event.target.id], "info");
+        subvalue = eachdatamapinfo[1].datacontent[event.target.id];
+        // Object.entries(subvalue).map((something) => {
+        //   console.log(something[0], "name");
+        //   console.log(something[1].length, "length");
+        //   if (something[1].length > 0) {
+        //     MEDIA_STATUS.something[0] = true;
+        //   }
+        // });
+      }
+    });
+    function start() {
+      let delay = 0;
+      for (let media in MEDIA_STATUS) {
+        if (MEDIA_STATUS[media]) {
+          ANIMATION_DELAY[media] = delay;
+          delay += MEDIA_ANIMATION_DURATION_REQ[media];
+        }
+      }
+      console.log(ANIMATION_DELAY);
+      textbtn[0].style.animationDelay = `${ANIMATION_DELAY.text}s`;
+      imagebtn[0].style.animationDelay = `${ANIMATION_DELAY.image}s`;
+      pdfbtn[0].style.animationDelay = `${ANIMATION_DELAY.pdf}s`;
+      videobtn[0].style.animationDelay = `${ANIMATION_DELAY.video}s`;
+      console.log(MEDIA_STATUS, "media-status");
+    }
+
+    start();
+    setModalbtn(true);
+  }
+
+  // <button style={{animation_delay: ANIMATION_DELAY.text}}>Text</button>
+
+  function reset() {
+    const hostspots = document.getElementsByClassName("hotspot");
+    for (let i = 0; i < hostspots.length; i++) {
+      hostspots.item(i).style.zIndex = 0;
+    }
+    backdropRef.current.style.zIndex = -1;
+    setActiveGroup((state) => ({
+      prev: state.current,
+      current: null,
+    }));
+    setActiveHotspot((state) => ({
+      prev: state.current,
+      current: null,
+    }));
+
+    setModalbtn(false);
+    // setShowlist(false);
+    Setshowsub(false);
+    // group = false;
+    Setcurrentsubservice(null);
+
+    sector = false;
+    service = false;
+    Setshowsectorlist(false);
+    Setshowservicelist(false);
+    individualhotspot = null;
+    ssname = null;
+    subvalue = null;
+    MEDIA_STATUS.text = false;
+    MEDIA_STATUS.image = false;
+    MEDIA_STATUS.pdf = false;
+    MEDIA_STATUS.video = false;
+    ANIMATION_DELAY.text = 0;
+    ANIMATION_DELAY.image = 0;
+    ANIMATION_DELAY.pdf = 0;
+    ANIMATION_DELAY.video = 0;
+  }
+
+  const backdropClickHandler = () => {
+    setInfoModal(null);
+    console.log("Backdrop clicked");
+  };
+
+  return (
+    <div className="App">
+      <div id="Parent">
+        <img className="bg-image" src={Ground} />
+        {/* <div className={isActive ? "backdrop" : ""}></div>
+        <div className={isActive2 ? "backdrop2" : ""}></div> */}
+        <img className="hotspot airport-image" id="Airport" src={Airport} />
+        <img className="hotspot building-image" id="Building" src={Building} />
+        <img
+          className="hotspot building2-image"
+          id="Building2"
+          src={Building2}
+        />
+        <img
+          className="hotspot building3-image"
+          id="Building3"
+          src={Building3}
+        />
+
+        <img
+          className="hotspot IREbuilding-image"
+          id="IREbuilding"
+          src={IREbuildings}
+          onClick={individualitem}
+        />
+
+        <img
+          className="hotspot TMTbuilding-image"
+          id="TMTbuilding"
+          src={TMTbuilding}
+          onClick={individualitem}
+        />
+        <img
+          className="hotspot CMhospital-image"
+          id="CMhospital"
+          src={CMhospital}
+          onClick={individualitem}
+        />
+        <img
+          className="hotspot CMmall-image"
+          id="CMmall"
+          src={CMmall}
+          // onClick={individualitem}
+        />
+        <img
+          className="hotspot EDTech-image"
+          id="EDTech"
+          src={EDTech}
+          onClick={individualitem}
+        />
+        <img
+          className="hotspot ESGelectric-image"
+          id="ESGelectric"
+          src={ESGelectric}
+          onClick={individualitem}
+        />
+        <img
+          className="hotspot FSbank-image"
+          id="FSbank"
+          src={FSbank}
+          onClick={individualitem}
+        />
+        <img
+          className="hotspot SLBCcoal-image"
+          id="SLBCcoal"
+          src={SLBCcoal}
+          onClick={individualitem}
+        />
+        <div>
+          <img
+            className="hotspot IREdock-image"
+            id="IREdock"
+            src={IREdock}
+            onClick={individualitem}
+          />
+          <video className="boat" src={Boat} autoPlay loop muted />
+        </div>
+
+        <img
+          className="hotspot SLBCbuilding-image"
+          id="SLBCbuilding"
+          src={SLBCbuilding}
+          onClick={individualitem}
+        />
+        <img
+          className="hotspot SLRAgovernment-image"
+          id="SLRAgovernment"
+          src={SLRAgovernment}
+          onClick={individualitem}
+        />
+        <img
+          className="hotspot SLRAhole-image"
+          id="SLRAhole"
+          src={SLRAhole}
+          onClick={individualitem}
+        />
+        {/* <video className="damwater" src={Damwater} autoPlay loop muted /> */}
+        <video className="fire1" src={fire} autoPlay loop muted />
+        <video className="fire2" src={fire} autoPlay loop muted />
+        <img
+          className="hotspot IMAbuilding-image"
+          id="IMAbuilding"
+          src={IMAbuilding}
+          onClick={individualitem}
+        />
+        <video
+          className="hotspot TMTDrone-image"
+          id="TMTDrone"
+          src={TMTDrone}
+          onClick={individualitem}
+          autoPlay
+          loop
+          muted
+        />
+        <img
+          className="hotspot TMTMovieposter-image"
+          id="TMTMovieposter"
+          src={TMTMovieposter}
+          onClick={individualitem}
+        />
+        <img
+          className="hotspot TMTMovieposter-image2"
+          id="TMTMovieposter2"
+          src={TMTMovieposter2}
+        />
+        <img
+          className="hotspot TMTMovieposter-image3"
+          id="TMTMovieposter3"
+          src={TMTMovieposter3}
+        />
+        <img
+          className="hotspot TMTStadium-image"
+          id="TMTStadium"
+          src={TMTStadium}
+          onClick={individualitem}
+        />
+        <img
+          className="hotspot Mobileqr-image"
+          id="Mobileqr"
+          src={Mobileqr}
+          onClick={individualitem}
+        />
+        <img className="hotspot ESGtrees1" id="ESGtrees1" src={ESGtrees1} />
+        <img className="hotspot ESGTree2" id="ESGTree2" src={ESGTree2} />
+        <img
+          className="hotspot ESGtree3"
+          id="ESGtree3"
+          src={ESGtree3}
+          // onClick={individualitem}
+        />
+
+        <div id="primary">
+          <button className="primary-btn" onClick={enablegroup}>
+            <img
+              className="primary-btnimage7"
+              id="sector7"
+              src={TechnologyMediatelecom}
+            />
+          </button>
+          <button className="primary-btn" onClick={enablegroup}>
+            <img
+              className="primary-btnimage2"
+              id="sector2"
+              src={EnergyNatural}
+            />
+          </button>
+          <button className="primary-btn" onClick={enablegroup}>
+            <img
+              className="primary-btnimage5"
+              id="sector5"
+              src={InfrastructureRealEstate}
+            />
+          </button>
+          <button className="primary-btn" onClick={enablegroup}>
+            <img
+              className="primary-btnimage1"
+              id="sector1"
+              src={Consumermarkets}
+            />
+          </button>
+          <button className="primary-btn" onClick={enablegroup}>
+            <img
+              className="primary-btnimage3"
+              id="sector3"
+              src={FinancialServices}
+            />
+          </button>
+          <button className="primary-btn" onClick={enablegroup}>
+            <img
+              className="primary-btnimage4"
+              id="sector4"
+              src={GovernmentPublic}
+            />
+          </button>
+          <button className="primary-btn" onClick={enablegroup}>
+            <img
+              className="primary-btnimage6"
+              id="sector6"
+              src={IndustrialManufacturingAuto}
+            />
+          </button>
+        </div>
+
+        <div id="service">
+          <button className="service-btnmain" onClick={getanimation}>
+            <img src={Services} className="service-btnimage" id="service1" />
+          </button>
+          <div id={animation ? "fixserviceanimation" : "serviceanimation"}>
+            <button className="service-btn" onClick={enablegroup}>
+              <img
+                src={BusinessConsulting}
+                className="service-btnimage"
+                id="service2"
+              />
+            </button>
+            <button className="service-btn" onClick={enablegroup}>
+              <img
+                src={DigitalTrustCyber}
+                className="service-btnimage"
+                id="service3"
+              />
+            </button>
+            <button className="service-btn" onClick={enablegroup}>
+              <img
+                src={RiskAdvisory}
+                className="service-btnimage"
+                id="service4"
+              />
+            </button>
+            <button className="service-btn" onClick={enablegroup}>
+              <img
+                src={TechEnablement}
+                className="service-btnimage"
+                id="service5"
+              />
+            </button>
+            <button className="service-btn" onClick={enablegroup}>
+              <img src={OneMA} className="service-btnimage" id="service6" />
+            </button>
+            <button className="service-btn" onClick={enablegroup}>
+              <img
+                src={ManagedServices}
+                className="service-btnimage"
+                id="service7"
+              />
+            </button>
+            <button className="service-btn" onClick={enablegroup}>
+              <img src={Tax} className="service-btnimage" id="service8" />
+            </button>
+            <button className="service-btn" onClick={enablegroup}>
+              <img
+                src={StrategicInitiatives}
+                className="service-btnimage"
+                id="service9"
+              />
+            </button>
+          </div>
+        </div>
+
+        <div
+          className="modalbtns"
+          ref={buttons}
+          style={modalbtn ? { display: "flex" } : { display: "none" }}
+        >
+          <div className="flip-box-inner">
+            <button
+              className="modalbtn"
+              onClick={() =>
+                setInfoModal({
+                  type: "text",
+                  urls: subvalue["text"],
+                })
+              }
+              hidden={subvalue && subvalue["text"].length === 0}
+            >
+              <div id="btnicon-container">
+                <img src={pptIcon} className="btnicon" />
+              </div>
+            </button>
+          </div>
+
+          <div className="flip-box-inner2">
+            <button
+              className="modalbtn"
+              onClick={() =>
+                setInfoModal({
+                  type: "image",
+                  urls: subvalue["image"],
+                })
+              }
+              hidden={subvalue && subvalue["image"].length === 0}
+            >
+              <div id="btnicon-container">
+                <img src={imageIcon} className="btnicon" />
+              </div>
+            </button>
+          </div>
+          <div className="flip-box-inner3">
+            <button
+              className="modalbtn"
+              onClick={() =>
+                setInfoModal({
+                  type: "pdf",
+                  urls: subvalue["pdf"],
+                })
+              }
+              hidden={subvalue && subvalue["pdf"].length === 0}
+            >
+              <div id="btnicon-container">
+                <img src={pdfIcon} className="btnicon" />
+              </div>
+            </button>
+          </div>
+          <div className="flip-box-inner4">
+            <button
+              className="modalbtn"
+              onClick={() =>
+                setInfoModal({
+                  type: "video",
+                  urls: subvalue["video"],
+                })
+              }
+              hidden={subvalue && subvalue["video"].length === 0}
+            >
+              <div id="videoicon-container">
+                <video
+                  className="videoicon"
+                  src="https://experientialetc.com/KPMG-test/assets/services/business%20consulting/PIVOT%20FILM.mp4"
+                  autoPlay
+                  loop
+                  muted
+                />
+              </div>
+            </button>
+          </div>
+        </div>
+        <div
+          style={showsectorlist ? { display: "block" } : { display: "none" }}
+        >
+          <div id="Sectorlist">
+            {mainsec.map((sectorName) => {
+              return (
+                <button
+                  className="Highlightbtn"
+                  onClick={showmainbtn}
+                  key={sectorName}
+                  id={sectorName}
+                >
+                  {sectorName}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        <div
+          style={showservicelist ? { display: "block" } : { display: "none" }}
+        >
+          <div id="Servicelist">
+            {mainsev.map((serviceName) => {
+              return (
+                <button
+                  className="Highlightbtn"
+                  onClick={showmainbtn}
+                  key={serviceName}
+                  id={serviceName}
+                >
+                  {serviceName}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        {infoModal && (
+          <Carousel
+            onBackDropClick={backdropClickHandler}
+            type={infoModal.type}
+            urls={infoModal.urls}
+            itemTop={itemTop}
+            itemLeft={itemLeft}
+          />
+        )}
+        <Navigation />
+
+        <div id="backdrop" ref={backdropRef} onClick={reset}></div>
+      </div>
+    </div>
+  );
+}
+
+export default App;
