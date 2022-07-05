@@ -1044,7 +1044,11 @@ function App() {
                   id={eachsecIcon.resource_name}
                   className="primary-icon"
                 />
-                <img src={eachsecIcon.label_url} className="primary-text" />
+                <img
+                  src={eachsecIcon.label_url}
+                  id={eachsecIcon.resource_name}
+                  className="primary-text"
+                />
               </button>
             );
           })}

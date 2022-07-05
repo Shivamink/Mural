@@ -23,11 +23,12 @@ function MyCarousel({ onBackDropClick, type, urls, itemTop, itemLeft }) {
   const handleSelect = (selectedIndex, e) => {
     carouselarray.forEach((random) => {
       console.log(random.classList.value === "active carousel-item");
-
-      if (random.classList.value === "active carousel-item") {
-        random.childNodes[0].pause();
-      } else {
-        random.childNodes[0].play();
+      if (random.childNodes[0].id == "player") {
+        if (random.classList.value === "active carousel-item") {
+          random.childNodes[0].pause();
+        } else {
+          random.childNodes[0].play();
+        }
       }
     });
   };
